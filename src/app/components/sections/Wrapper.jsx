@@ -2,7 +2,7 @@
 
 import { clsx as cn } from "clsx";
 import { useEffect, useRef, useState } from "react";
-import { Hero, Testimonials, Works } from ".";
+import { Benefits, Hero, Testimonials, Works } from ".";
 import { BtnOrLink } from "../elements";
 import { Footer } from "./Footer";
 
@@ -63,6 +63,7 @@ export const Wrapper = () => {
       <div ref={triggerSectionRef}>
         <Testimonials />
       </div>
+      <Benefits />
       <Footer />
     </div>
   );

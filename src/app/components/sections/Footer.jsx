@@ -38,7 +38,7 @@ export const Footer = () => {
       scrollTrigger: {
         trigger: imgRef.current,
         start: "bottom center",
-        end: "300% 10%",
+        end: "400% 10%",
         scrub: false,
 
         markers: false,
@@ -65,7 +65,7 @@ export const Footer = () => {
     <footer>
       <div
         ref={imgRef}
-        className="h-[20vh] bg-cover bg-center"
+        className="h-[50vh] bg-cover bg-center md:h-[20vh]"
         style={{
           backgroundImage: "url('./img.webp')",
         }}

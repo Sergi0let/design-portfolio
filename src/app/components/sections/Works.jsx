@@ -16,6 +16,7 @@ export const Works = () => {
   const titleRef = useRef(null);
   const listRef = useRef(null);
   const isMobile = useMediaQuery({ maxWidth: 768 });
+
   useGSAP(() => {
     const titleElem = titleRef.current;
     const words = titleElem?.textContent || "";
@@ -76,7 +77,7 @@ export const Works = () => {
       <div ref={containerRef} className="wrap-primary">
         <h2
           ref={titleRef}
-          className="text-title-md title-works text-pretty leading-tight tracking-tight sm:text-justify md:indent-[var(--0-700)]"
+          className="title-works text-pretty text-title-md leading-tight tracking-tight sm:text-justify md:indent-[var(--0-700)]"
         >
           Crafting user-first designs that create impactful digital solutions to
           help startups and businesses succeed
@@ -98,7 +99,7 @@ export const Works = () => {
                   />
                 </div>
                 <div className="mt-3 flex items-center justify-between gap-2 overflow-hidden md:mt-4">
-                  <h3 className="text-title-sm flex flex-1 -translate-x-4 items-center leading-none transition duration-700 group-hover:translate-x-0">
+                  <h3 className="flex flex-1 -translate-x-4 items-center text-title-sm leading-none transition duration-700 group-hover:translate-x-0">
                     <span className="mr-2 size-2 rounded-full bg-foreground" />
                     {title}
                   </h3>
@@ -109,7 +110,7 @@ export const Works = () => {
                     className=""
                   />
                 </div>
-                <p className="text-tetriary mt-3 md:mt-4">{desc}</p>
+                <p className="mt-3 text-tetriary md:mt-4">{desc}</p>
               </div>
             </li>
           ))}

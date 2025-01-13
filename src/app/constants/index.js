@@ -50,3 +50,24 @@ export const testimonials = [
     imageUrl: "/daniel.jpg",
   },
 ];
+
+export const benefitsData = [
+  {
+    id: 1,
+    title: "Full-time: your dedicated designer",
+    desc: "I work as part of your team to bring projects of any complexity to life.",
+    url: "#",
+  },
+  {
+    id: 2,
+    title: "Conversion rate improvement",
+    desc: "I optimize existing projects, enhancing structure, design, and functionality.",
+    url: "#",
+  },
+  {
+    id: 3,
+    title: "Conversion rate improvement",
+    desc: "I optimize existing projects, enhancing structure, design, and functionality.",
+    url: "#",
+  },
+];
