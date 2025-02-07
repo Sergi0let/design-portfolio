@@ -1,70 +1,53 @@
 "use client";
 
 import { clsx as cn } from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Benefits, Hero, Testimonials, Works } from ".";
-import { BtnOrLink } from "../elements";
+import { BtnOrLink, FormBlock, MenuBlock } from "../elements";
 import { Footer } from "./Footer";
 
 export const Wrapper = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const fixedElemRef = useRef(null);
-  const triggerSectionRef = useRef(null);
+  const [isTalkOpen, setIsTalkOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen((prevIsDark) => !prevIsDark);
+  const openMenu = () => {
+    setIsOpen(true);
+  };
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsDark(entry.isIntersecting); // Змінюємо стан залежно від видимості
-      },
-      {
-        root: null, // Відстежуємо видимість у вікні
-        threshold: 0.5, // 50% елемента має бути видимим для спрацьовування
-      },
-    );
+  const openTalk = () => {
+    setIsTalkOpen(true);
+  };
+  const closeTalk = () => {
+    setIsTalkOpen(false);
+  };
 
-    if (triggerSectionRef.current) {
-      observer.observe(triggerSectionRef.current);
-    }
-
-    return () => {
-      if (triggerSectionRef.current) {
-        observer.unobserve(triggerSectionRef.current);
-      }
-    };
-  }, []);
   return (
-    <div>
-      {/* Фіксований елемент */}
-      <div
-        ref={fixedElemRef}
-        className={cn(
-          "fixed right-[var(--16-40)] top-6 z-50 flex items-center gap-2 transition-colors duration-300 md:gap-4",
-        )}
-      >
-        <BtnOrLink title="Let’s Talk" isDark={isDark} cursorHover="dark" />
-        <button
-          data-hover="dark"
-          aria-label="Open menu"
-          onClick={toggleMenu}
-          className={cn(
-            "btn-menu",
-            isOpen && "btn-menu_open",
-            isDark ? "btn-menu_dark" : "btn-menu_white",
-          )}
-        ></button>
-      </div>
+    <div className="relative">
+      {!(isOpen && isTalkOpen) && (
+        <>
+          <BtnOrLink className="btn-talk" title="Let’s Talk" onClick={openTalk} cursorHover="dark" />
+          <button
+            data-hover="dark"
+            aria-label="Open menu"
+            onClick={openMenu}
+            className={cn("btn-menu", "btn-menu_dark")}
+          ></button>
+        </>
+      )}
       <Hero />
-      <div>
+      <div className="!bg-red-200">
         <Works />
       </div>
-      <div ref={triggerSectionRef}>
+      <div>
         <Testimonials />
       </div>
       <Benefits />
       <Footer />
+      <FormBlock isTalkOpen={isTalkOpen} toggleMenu={closeMenu} toggleTalk={closeTalk} />
+      <MenuBlock isOpen={isOpen} toggleMenu={closeMenu} toggleTalk={openTalk} />
     </div>
   );
 };

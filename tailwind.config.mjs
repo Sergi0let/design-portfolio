@@ -15,6 +15,7 @@ const config = {
         foreground: "var(--foreground)",
         secondary: "var(--secondary)",
         tetriary: "var(--tetriary)",
+        dark: "var(--dark)",
       },
       fontSize: {
         logo: "var(--20-32)",

@@ -2,7 +2,7 @@
 
 import { clsx as cn } from "clsx";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const BtnOrLink = ({
   title,
@@ -15,34 +15,38 @@ export const BtnOrLink = ({
   cursorHover = null,
   isDark = false,
 }) => {
+  const [, setIsClient] = useState(false);
   const buttonRef = useRef(null);
 
-  const handleRippleEffect = (event) => {
-    if (!buttonRef.current) return;
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-    const rect = buttonRef.current.getBoundingClientRect();
-    const ripple = document.createElement("span");
+  // const handleRippleEffect = (event) => {
+  //   if (!buttonRef.current) return;
 
-    const size = Math.max(rect.width, rect.height);
-    const x = event.clientX - rect.left - size / 2;
-    const y = event.clientY - rect.top - size / 2;
+  //   const rect = buttonRef.current.getBoundingClientRect();
+  //   const ripple = document.createElement("span");
 
-    ripple.style.width = `${size}px`;
-    ripple.style.height = `${size}px`;
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    ripple.classList.add("ripple-effect");
+  //   const size = Math.max(rect.width, rect.height);
+  //   const x = event.clientX - rect.left - size / 2;
+  //   const y = event.clientY - rect.top - size / 2;
 
-    buttonRef.current.appendChild(ripple);
+  //   ripple.style.width = `${size}px`;
+  //   ripple.style.height = `${size}px`;
+  //   ripple.style.left = `${x}px`;
+  //   ripple.style.top = `${y}px`;
+  //   ripple.classList.add("ripple-effect");
 
-    setTimeout(() => ripple.remove(), 1000);
-  };
+  //   buttonRef.current.appendChild(ripple);
 
+  //   setTimeout(() => ripple.remove(), 1000);
+  // };
   const handleClick = (e) => {
     if (onClick) {
-      onClick();
+      onClick(e); // Передаємо подію
     }
-    handleRippleEffect(e);
+    // handleRippleEffect(e);
   };
 
   const baseStyles = cn(
@@ -56,21 +60,15 @@ export const BtnOrLink = ({
   const darkStyles = cn(
     "btn rounded-[40px] md:text-[28px] sm:px-8 sm:py-[14px] relative overflow-hidden group uppercase text-base leading-none px-4 py-2",
     isDark ? "text-foreground bg-white " : "text-white bg-foreground",
+    className,
   );
 
   const content = (
     <>
       {isBeam && (
         <span className="relative mr-[10px] flex h-[10px] w-[10px]">
-          <span
-            className={cn("btn-ping", secondary ? "bg-foreground" : "bg-white")}
-          />
-          <span
-            className={cn(
-              "btn-ping_dot",
-              secondary ? "bg-foreground" : "bg-white",
-            )}
-          />
+          <span className={cn("btn-ping", secondary ? "bg-foreground" : "bg-white")} />
+          <span className={cn("btn-ping_dot", secondary ? "bg-foreground" : "bg-white")} />
         </span>
       )}
       {title}

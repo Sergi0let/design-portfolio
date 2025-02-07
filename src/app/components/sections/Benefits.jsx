@@ -11,7 +11,6 @@ export const Benefits = () => {
   const containerRef = useRef(null);
   const headingRef = useRef(null);
   const subHeadingRef = useRef(null);
-  const listRef = useRef(null);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useGSAP(() => {
@@ -25,9 +24,7 @@ export const Benefits = () => {
     const charsSub = subHeadingWords.split("");
     subHeadingElem.textContent = "";
 
-    const listItems = listRef.current.querySelectorAll("li");
-
-    if (!(listItems || subHeadingElem || headingElem)) return;
+    if (!(subHeadingElem || headingElem)) return;
 
     chars.forEach((char) => {
       const span = document.createElement("span");
@@ -67,60 +64,31 @@ export const Benefits = () => {
         },
         { opacity: 1, duration: 2, stagger: 0.1 },
       );
-
-    gsap.fromTo(
-      listItems,
-      {
-        opacity: 0.1,
-        y: 40,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.5,
-        scrollTrigger: {
-          trigger: listItems,
-          start: `${isMobile ? "200px" : "bottom"} ${isMobile ? "70%" : "50%"}`,
-          end: `${isMobile ? "1000px" : "400px"} ${isMobile ? "20%" : "20%"}`,
-          scrub: 1,
-          markers: false,
-        },
-      },
-    );
   }, []);
 
   return (
     <section>
       <div className="wrap-primary py-[var(--48-80)]">
         <div ref={containerRef}>
-          <h2
-            ref={headingRef}
-            className="mr-[20vw] text-balance text-title-md leading-none md:mr-[40vw]"
-          >
+          <h2 ref={headingRef} className="mr-[20vw] text-balance text-title-md leading-none md:mr-[40vw]">
             Let’s create something incredible together.
           </h2>
-          <p
-            ref={subHeadingRef}
-            className="mt-2 text-logo text-tetriary md:mt-4"
-          >
+          <p ref={subHeadingRef} className="mt-2 text-logo text-tetriary md:mt-4">
             There are three ways work with me.
           </p>
         </div>
-        <ul
-          ref={listRef}
-          className="mt-[var(--24-40)] grid gap-[var(--24-40)] md:grid-cols-3"
-        >
+        <ul className="mt-[var(--24-40)] grid gap-[var(--24-40)] md:grid-cols-3">
           {benefitsData.map(({ title, desc, id, url }) => (
-            <li key={id} className="bg-white p-[var(--28-40)]">
+            <li
+              data-fade="true"
+              style={{ transitionDelay: `${id * 0.1}s` }}
+              key={id}
+              className="bg-white p-[var(--28-40)]"
+            >
               <h3 className="text-title-card leading-[1.1]">{title}</h3>
               <p className="mb-[var(--80-120)] mt-6">{desc}</p>
 
-              <BtnOrLink
-                to={url}
-                cursorHover={"dark"}
-                title={"Get a Quote"}
-                isBeam
-              />
+              <BtnOrLink to={url} cursorHover={"dark"} title={"Get a Quote"} isBeam />
             </li>
           ))}
         </ul>

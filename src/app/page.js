@@ -2,7 +2,7 @@ import { Wrapper } from "./components";
 
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <Wrapper />
     </main>
   );

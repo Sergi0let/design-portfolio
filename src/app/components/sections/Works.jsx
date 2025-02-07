@@ -14,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 export const Works = () => {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
-  const listRef = useRef(null);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useGSAP(() => {
@@ -47,30 +46,6 @@ export const Works = () => {
         },
       },
     );
-
-    if (listRef.current) {
-      const listItems = listRef.current.querySelectorAll("li");
-      gsap.fromTo(
-        listItems,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: isMobile ? 0.2 : 0.5,
-          scrollTrigger: {
-            trigger: listRef.current,
-            start: `${isMobile ? "50%" : "70%"} 90%`,
-            end: "bottom top",
-            scrub: 1,
-            markers: false,
-          },
-        },
-      );
-    }
   });
   return (
     <section className="bg-white py-[var(--48-80)]">
@@ -79,15 +54,11 @@ export const Works = () => {
           ref={titleRef}
           className="title-works text-pretty text-title-md leading-tight tracking-tight sm:text-justify md:indent-[var(--0-700)]"
         >
-          Crafting user-first designs that create impactful digital solutions to
-          help startups and businesses succeed
+          Crafting user-first designs that create impactful digital solutions to help startups and businesses succeed
         </h2>
-        <ul
-          ref={listRef}
-          className="my-[var(--24-40)] grid-cols-2 gap-[var(--24-40)] space-y-5 sm:grid md:space-y-0"
-        >
-          {works.map(({ id, imageUrl, title, desc, url }) => (
-            <li key={id} className="group">
+        <ul className="my-[var(--24-40)] grid-cols-2 gap-[var(--24-40)] space-y-5 sm:grid md:space-y-0">
+          {works.map(({ id, imageUrl, title, desc, url }, index) => (
+            <li key={id} className="group" data-fade="true" style={{ transitionDelay: `${index * 0.1}s` }}>
               <div href="/work">
                 <div className="overflow-hidden">
                   <Image
@@ -103,12 +74,7 @@ export const Works = () => {
                     <span className="mr-2 size-2 rounded-full bg-foreground" />
                     {title}
                   </h3>
-                  <BtnOrLink
-                    to={url}
-                    title="Visit site"
-                    secondary={true}
-                    className=""
-                  />
+                  <BtnOrLink to={url} title="Visit site" secondary={true} className="" />
                 </div>
                 <p className="mt-3 text-tetriary md:mt-4">{desc}</p>
               </div>

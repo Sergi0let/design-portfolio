@@ -71,3 +71,7 @@ export const benefitsData = [
     url: "#",
   },
 ];
+
+export const mainData = {
+  email: "roman.demydyuk@gmail.com",
+};

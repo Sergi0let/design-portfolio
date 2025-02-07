@@ -51,9 +51,9 @@ export const Footer = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 3,
-          delay: 1,
-          stagger: 0.8,
+          duration: 1,
+          delay: 0,
+          stagger: 0.2,
           ease: "power2.out",
         },
         "start",
@@ -72,10 +72,7 @@ export const Footer = () => {
       >
         <div className="wrap-primary flex h-full flex-col items-center justify-between">
           <div className="flex h-full items-center justify-center">
-            <a
-              href="#"
-              className="footer-link text-title-lg font-bold text-white"
-            >
+            <a href="#" className="footer-link text-title-lg font-bold text-white">
               roman@mail.com
             </a>
           </div>

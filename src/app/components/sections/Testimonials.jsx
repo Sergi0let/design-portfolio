@@ -16,9 +16,7 @@ const AnimatedTestimonial = ({ testimonial }) => {
     if (bgRef.current && elementRef.current) {
       const image = elementRef.current.querySelector(".testimonial-image");
       const info = elementRef.current.querySelector(".testimonial-info");
-      const description = elementRef.current.querySelector(
-        ".testimonial-description",
-      );
+      const description = elementRef.current.querySelector(".testimonial-description");
 
       const timeline = gsap.timeline({
         scrollTrigger: {
@@ -72,10 +70,8 @@ const AnimatedTestimonial = ({ testimonial }) => {
           />
         </div>
         <div className="testimonial-info">
-          <h3 className="text-xl font-bold tracking-tighter text-white">
-            {testimonial.name}
-          </h3>
-          <p className="text-tetriary mt-1 text-sm">{testimonial.role}</p>
+          <h3 className="text-xl font-bold tracking-tighter text-white">{testimonial.name}</h3>
+          <p className="mt-1 text-sm text-tetriary">{testimonial.role}</p>
         </div>
       </div>
       <p className="testimonial-description mt-[var(--20-32)] line-clamp-[7] text-logo tracking-tighter text-white">
@@ -94,9 +90,7 @@ export const Testimonials = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
-    );
+    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   // Свайпи
@@ -136,25 +130,17 @@ export const Testimonials = () => {
   useGSAP(handleTouch);
 
   return (
-    <section
-      ref={containerRef}
-      className="wrap-decor relative overflow-hidden bg-foreground"
-    >
+    <section ref={containerRef} className="wrap-decor relative overflow-hidden bg-foreground">
       <div className="wrap-primary py-32">
         <div className="relative z-10">
           <div className="mx-auto max-w-[660px]">
-            <AnimatedTestimonial
-              key={currentSlide}
-              testimonial={testimonials[currentSlide]}
-            />
+            <AnimatedTestimonial key={currentSlide} testimonial={testimonials[currentSlide]} />
             <div className="relative z-10 mt-8 flex space-x-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`h-3 w-3 rounded-full ${
-                    index === currentSlide ? "bg-white" : "bg-gray-500"
-                  }`}
+                  className={`h-3 w-3 rounded-full ${index === currentSlide ? "bg-white" : "bg-gray-500"}`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
@@ -165,7 +151,7 @@ export const Testimonials = () => {
             onClick={prevSlide}
             className={cn(
               currentSlide > 0 ? "scale-1" : "scale-0",
-              "bg-tetriary absolute left-0 top-1/2 hidden size-[80px] -translate-y-1/2 items-center justify-center rounded-full text-white transition-all duration-700 md:flex",
+              "absolute left-0 top-1/2 hidden size-[80px] -translate-y-1/2 items-center justify-center rounded-full bg-tetriary text-white transition-all duration-700 md:flex",
             )}
             aria-label="Previous testimonial"
           >
@@ -176,7 +162,7 @@ export const Testimonials = () => {
             onClick={nextSlide}
             className={cn(
               currentSlide < testimonials.length - 1 ? "scale-1" : "scale-0",
-              "bg-tetriary absolute right-0 top-1/2 hidden size-[80px] -translate-y-1/2 items-center justify-center rounded-full text-white duration-700 md:flex",
+              "absolute right-0 top-1/2 hidden size-[80px] -translate-y-1/2 items-center justify-center rounded-full bg-tetriary text-white duration-700 md:flex",
             )}
             aria-label="Next testimonial"
           >

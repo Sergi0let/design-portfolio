@@ -13,7 +13,7 @@ export const CustomCursor = () => {
 
     const handleMouseOver = (e) => {
       const target = e.target;
-      const hoverType = target.dataset.hover; // Зчитуємо data-hover
+      const hoverType = target.dataset.hover;
       if (hoverType) {
         setHoveredType(hoverType);
       }
@@ -47,8 +47,7 @@ export const CustomCursor = () => {
         borderRadius: "50%",
         pointerEvents: "none",
         transform: `translate(${position.x}px, ${position.y}px)`,
-        transition:
-          "transform 0.1s linear, background-color 0.2s, width 0.2s, height 0.2s",
+        transition: "transform 0.1s linear, background-color 0.2s, width 0.2s, height 0.2s",
         zIndex: 1000,
       }}
     >
