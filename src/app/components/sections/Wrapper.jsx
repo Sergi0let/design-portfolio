@@ -8,7 +8,7 @@ import { Footer } from "./Footer";
 
 export const Wrapper = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isTalkOpen, setIsTalkOpen] = useState(true);
+  const [isTalkOpen, setIsTalkOpen] = useState(false);
 
   const openMenu = () => {
     setIsOpen(true);

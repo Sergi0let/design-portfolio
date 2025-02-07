@@ -125,7 +125,10 @@ export const FormBlock = ({ isTalkOpen = false, toggleMenu, toggleTalk }) => {
   };
 
   return (
-    <aside className={`fixed top-0 z-30 h-full w-full bg-dark opacity-100 transition-all duration-300 ease-in-out`}>
+    <aside
+      className={`fixed z-40 h-full w-full bg-dark transition-all duration-300 ease-in-out ${isTalkOpen ? "top-0 opacity-100" : "-top-full opacity-0"}`}
+      // className={`fixed top-0 z-30 h-full w-full bg-dark opacity-100 transition-all duration-300 ease-in-out`}
+    >
       <div className="overflow-y-auto">
         <div
           className={`absolute left-0 top-0 z-50 size-full bg-dark transition-all ${
