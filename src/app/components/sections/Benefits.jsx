@@ -83,12 +83,14 @@ export const Benefits = () => {
               data-fade="true"
               style={{ transitionDelay: `${id * 0.1}s` }}
               key={id}
-              className="bg-white p-[var(--28-40)]"
+              className="grid bg-white p-[var(--28-40)]"
             >
               <h3 className="text-title-card leading-[1.1]">{title}</h3>
               <p className="mb-[var(--80-120)] mt-6">{desc}</p>
 
-              <BtnOrLink to={url} cursorHover={"dark"} title={"Get a Quote"} isBeam />
+              <div className="">
+                <BtnOrLink to={url} className="w-full" cursorHover={"dark"} title={"Get a Quote"} isBeam />
+              </div>
             </li>
           ))}
         </ul>

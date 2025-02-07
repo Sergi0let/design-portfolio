@@ -16,6 +16,7 @@ const config = {
         secondary: "var(--secondary)",
         tetriary: "var(--tetriary)",
         dark: "var(--dark)",
+        placeholder: "var(--placeholder)",
       },
       fontSize: {
         logo: "var(--20-32)",

@@ -53,7 +53,7 @@ export const BtnOrLink = ({
     "btn relative overflow-hidden group duration-500 ease-in-out uppercase text-base leading-none px-4 py-2",
     secondary
       ? "bg-secondary normal-case text-foreground rounded-[80px] md:text-xl sm:px-5 sm:py-2"
-      : "text-white bg-foreground rounded-[40px] md:text-[28px] sm:px-8 sm:py-[14px]",
+      : "text-white bg-foreground rounded-[40px] xl:text-[28px] sm:px-8 sm:py-[14px]",
     className,
   );
 
