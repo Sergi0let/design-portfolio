@@ -222,7 +222,7 @@ export const FormBlock = ({ isTalkOpen = false, toggleMenu, toggleTalk }) => {
                     {["$5k+", "$2k-$5k", "$1k-$2k", "up to $1k"].map((range) => (
                       <label
                         key={range}
-                        className={`border-placeholder rounded-full border px-[10px] py-2 transition-all hover:border-white hover:text-white ${
+                        className={`rounded-full border border-placeholder px-[10px] py-2 transition-all hover:border-white hover:text-white ${
                           form.budget === range ? "bg-white text-black hover:text-black" : ""
                         }`}
                       >
